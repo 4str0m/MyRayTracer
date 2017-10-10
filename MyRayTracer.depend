@@ -1,20 +1,57 @@
 # depslib dependency file v1.0
-1507645913 source:d:\benoit\c++projects\myraytracer\main.cpp
+1507650558 source:d:\benoit\c++projects\myraytracer\main.cpp
 	<iostream>
+	"Sphere.h"
 	"Image.h"
 
-1507645933 source:d:\benoit\c++projects\myraytracer\utils\color.cpp
+1507646086 source:d:\benoit\c++projects\myraytracer\utils\color.cpp
 	"Color.h"
 
-1507645796 d:\benoit\c++projects\myraytracer\utils\color.h
+1507646086 d:\benoit\c++projects\myraytracer\utils\color.h
 	<inttypes.h>
 	<iostream>
 
-1507645622 source:d:\benoit\c++projects\myraytracer\utils\image.cpp
+1507646086 source:d:\benoit\c++projects\myraytracer\utils\image.cpp
 	"Image.h"
 	<fstream>
 
-1507645743 d:\benoit\c++projects\myraytracer\utils\image.h
+1507646086 d:\benoit\c++projects\myraytracer\utils\image.h
 	<string>
 	"Color.h"
+
+1507648249 source:d:\benoit\c++projects\myraytracer\vec4.cpp
+	"Vec4.h"
+
+1507648273 d:\benoit\c++projects\myraytracer\vec4.h
+	<math.h>
+
+1507647810 source:d:\benoit\c++projects\myraytracer\util\ray.cpp
+	"Ray.h"
+
+1507647745 d:\benoit\c++projects\myraytracer\util\ray.h
+	"../Vec4.h"
+
+1507648308 source:d:\benoit\c++projects\myraytracer\objects\object.cpp
+	"Object.h"
+
+1507649064 d:\benoit\c++projects\myraytracer\objects\object.h
+	"../Utils/Ray.h"
+
+1507649382 d:\benoit\c++projects\myraytracer\utils\ray.h
+	"Vec4.h"
+
+1507650146 d:\benoit\c++projects\myraytracer\utils\vec4.h
+	<math.h>
+
+1507650289 source:d:\benoit\c++projects\myraytracer\objects\sphere.cpp
+	"Sphere.h"
+
+1507650243 d:\benoit\c++projects\myraytracer\objects\sphere.h
+	<Object.h>
+
+1507649895 source:d:\benoit\c++projects\myraytracer\utils\ray.cpp
+	"Ray.h"
+
+1507649962 source:d:\benoit\c++projects\myraytracer\utils\vec4.cpp
+	"Vec4.h"
 
