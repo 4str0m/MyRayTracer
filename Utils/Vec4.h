@@ -24,6 +24,8 @@ class Vec4
         Vec4 cross(const Vec4& o) const;
         double dot(const Vec4& o) const;
 
+        Vec4 reflect(const Vec4& o) const;
+
         double mag() const;
         double sqrMag() const;
         Vec4 normalized() const;

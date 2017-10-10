@@ -42,6 +42,12 @@ Vec4 Vec4::cross(const Vec4& o) const
     return Vec4(y*o.z - z*o.y, z*o.x - x*o.z, x*o.y - y*o.x);
 }
 
+Vec4 Vec4::reflect(const Vec4& o) const
+{
+    Vec4 n = o.normalized();
+    return *this - n * 2 * this->dot(n);
+}
+
 double Vec4::mag() const
 {
     return sqrt(sqrMag());

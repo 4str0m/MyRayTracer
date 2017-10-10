@@ -23,6 +23,11 @@ struct Color
         inline Color operator*(float s) const { return {r*s, g*s, b*s}; }
         inline Color operator/(float s) const { return {r/s, g/s, b/s}; }
 
+        Color& operator+=(const Color& o) { *this = *this + o; return *this; }
+        Color& operator*=(const Color& o) {*this = *this * o; return *this; }
+        Color& operator*=(float s) { *this = *this * s; return *this; }
+        Color& operator/=(float s) { *this = *this / s; return *this; }
+
         Color& clamp();
 
     private:

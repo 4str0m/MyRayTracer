@@ -17,6 +17,7 @@
 					<Add directory="Utils" />
 					<Add directory="Util" />
 					<Add directory="Objects" />
+					<Add directory="Materials" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -29,6 +30,7 @@
 					<Add directory="Utils" />
 					<Add directory="Util" />
 					<Add directory="Objects" />
+					<Add directory="Materials" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -39,6 +41,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Materials/Material.cpp" />
+		<Unit filename="Materials/Material.h" />
 		<Unit filename="Objects/Object.cpp" />
 		<Unit filename="Objects/Object.h" />
 		<Unit filename="Objects/Sphere.cpp" />

@@ -5,13 +5,14 @@
 
 struct Material
 {
-    Color c;
+    Color diffuseColor;
+    Color specularColor;
+    Color ambientColor;
 
     public:
-        Material(Color c)
-        : c(c) {}
+        Material(Color dc = {0}, Color sc = {0}, Color ac = {0})
+        : diffuseColor(dc), specularColor(sc), ambientColor(ac) {}
 
-    private:
 };
 
 #endif // MATERIAL_H

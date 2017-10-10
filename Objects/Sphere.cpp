@@ -14,10 +14,15 @@ bool Sphere::intersect(const Ray& ray, IntersectionData *intersectionData) const
     double d1 = (-b - sqrtdet) / (2*a);
     double d2 = (-b + sqrtdet) / (2*a);
 
-    if (d2 < 0 && d1 < 0)
+    if (d2 < DELTA_INTERSECT && d1 < DELTA_INTERSECT)
         return false; // the two points land behind the ray
 
-    intersectionData->pos = ray.o + ray.d * (d1 < d2 && d1 > 0 ? d1 : d2);
-    intersectionData->normal = (intersectionData->pos - m_pos).normalized();
+    if (intersectionData)
+    {
+        intersectionData->d = d1 < d2 && d1 > DELTA_INTERSECT ? d1 : d2;
+        intersectionData->pos = ray.at(intersectionData->d);
+        intersectionData->n = (intersectionData->pos - m_pos).normalized();
+        intersectionData->mat = m_mat;
+    }
     return true;
 }
