@@ -1,9 +1,16 @@
 #include <iostream>
 
-using namespace std;
+#include "Image.h"
 
 int main()
 {
-    cout << "Hello world!" << endl;
+    Image img(10, 10);
+
+    for(int i = 0; i < 10; ++i)
+    {
+        img.setPixel(i, i, Color(255));
+    }
+
+    img.saveImage("img");
     return 0;
 }
