@@ -12,7 +12,11 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-std=c++14" />
 					<Add option="-g" />
+					<Add directory="Utils" />
+					<Add directory="Util" />
+					<Add directory="Objects" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -22,6 +26,9 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="Utils" />
+					<Add directory="Util" />
+					<Add directory="Objects" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -32,6 +39,18 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Objects/Object.cpp" />
+		<Unit filename="Objects/Object.h" />
+		<Unit filename="Objects/Sphere.cpp" />
+		<Unit filename="Objects/Sphere.h" />
+		<Unit filename="Utils/Color.cpp" />
+		<Unit filename="Utils/Color.h" />
+		<Unit filename="Utils/Image.cpp" />
+		<Unit filename="Utils/Image.h" />
+		<Unit filename="Utils/Ray.cpp" />
+		<Unit filename="Utils/Ray.h" />
+		<Unit filename="Utils/Vec4.cpp" />
+		<Unit filename="Utils/Vec4.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
