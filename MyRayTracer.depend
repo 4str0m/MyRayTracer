@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1507645913 source:d:\benoit\c++projects\myraytracer\main.cpp
+	<iostream>
+	"Image.h"
+
+1507645933 source:d:\benoit\c++projects\myraytracer\utils\color.cpp
+	"Color.h"
+
+1507645796 d:\benoit\c++projects\myraytracer\utils\color.h
+	<inttypes.h>
+	<iostream>
+
+1507645622 source:d:\benoit\c++projects\myraytracer\utils\image.cpp
+	"Image.h"
+	<fstream>
+
+1507645743 d:\benoit\c++projects\myraytracer\utils\image.h
+	<string>
+	"Color.h"
+
