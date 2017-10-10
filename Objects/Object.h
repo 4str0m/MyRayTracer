@@ -2,15 +2,19 @@
 #define OBJECT_H
 
 #include "../Utils/Ray.h"
+#include "../Utils/IntersectionData.h"
+#include "../Materials/Material.h"
 
 class Object
 {
     public:
-        Object();
+        Object(Color c)
+        : m_mat(c) {}
 
-        virtual bool intersects(const Ray& ray) const = 0;
+        virtual bool intersect(const Ray& ray, IntersectionData *intersectionData) const = 0;
 
-    private:
+    public:
+        Material m_mat;
 };
 
 #endif // OBJECT_H

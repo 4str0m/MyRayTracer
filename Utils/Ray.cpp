@@ -2,6 +2,5 @@
 
 double Ray::distanceFrom(const Vec4& p) const
 {
-    Vec4 pp = pos - p;
-    return pp.cross(dir).mag() / dir.mag();
+    return (o - p).cross(d).mag() / d.mag();
 }

@@ -51,6 +51,11 @@ double Vec4::sqrMag() const
     return x*x + y*y + z*z;
 }
 
+double Vec4::dot(const Vec4& o) const
+{
+    return x*o.x + y*o.y + z*o.z;
+}
+
 Vec4 Vec4::normalized() const
 {
     double m = mag();

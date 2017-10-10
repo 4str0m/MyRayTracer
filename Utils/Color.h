@@ -7,16 +7,26 @@
 
 struct Color
 {
-    uint8_t r;
-    uint8_t g;
-    uint8_t b;
+    float r;
+    float g;
+    float b;
 
     public:
-        Color(uint8_t gray = 0)
-        : r(gray), g(gray), b(gray) {}
+        Color(float gray = 0.0)
+        : Color(gray, gray, gray) {}
 
-        Color(uint8_t r, uint8_t g, uint8_t b)
+        Color(float r, float g, float b)
         : r(r), g(g), b(b) {}
+
+        inline Color operator+(const Color& o) const { return {r+o.r, g+o.g, b+o.b}; }
+        inline Color operator*(const Color& o) const { return {r*o.r, g*o.g, b*o.b}; }
+        inline Color operator*(float s) const { return {r*s, g*s, b*s}; }
+        inline Color operator/(float s) const { return {r/s, g/s, b/s}; }
+
+        Color& clamp();
+
+    private:
+        static float clampColVal(float v) { return v < 1.0 ? v < 0.0 ? 0.0 : v : 1.0; }
 
 };
 

@@ -22,6 +22,7 @@ class Vec4
         Vec4& operator*=(double d);
 
         Vec4 cross(const Vec4& o) const;
+        double dot(const Vec4& o) const;
 
         double mag() const;
         double sqrMag() const;

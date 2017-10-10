@@ -1,13 +1,14 @@
 # depslib dependency file v1.0
-1507650558 source:d:\benoit\c++projects\myraytracer\main.cpp
+1507664910 source:d:\benoit\c++projects\myraytracer\main.cpp
 	<iostream>
 	"Sphere.h"
+	"Utils/IntersectionData.h"
 	"Image.h"
 
-1507646086 source:d:\benoit\c++projects\myraytracer\utils\color.cpp
+1507665664 source:d:\benoit\c++projects\myraytracer\utils\color.cpp
 	"Color.h"
 
-1507646086 d:\benoit\c++projects\myraytracer\utils\color.h
+1507665711 d:\benoit\c++projects\myraytracer\utils\color.h
 	<inttypes.h>
 	<iostream>
 
@@ -31,27 +32,37 @@
 1507647745 d:\benoit\c++projects\myraytracer\util\ray.h
 	"../Vec4.h"
 
-1507648308 source:d:\benoit\c++projects\myraytracer\objects\object.cpp
+1507665185 source:d:\benoit\c++projects\myraytracer\objects\object.cpp
 	"Object.h"
 
-1507649064 d:\benoit\c++projects\myraytracer\objects\object.h
+1507665397 d:\benoit\c++projects\myraytracer\objects\object.h
 	"../Utils/Ray.h"
+	"../Utils/IntersectionData.h"
+	"../Materials/Material.h"
 
-1507649382 d:\benoit\c++projects\myraytracer\utils\ray.h
+1507661780 d:\benoit\c++projects\myraytracer\utils\ray.h
 	"Vec4.h"
 
-1507650146 d:\benoit\c++projects\myraytracer\utils\vec4.h
+1507659684 d:\benoit\c++projects\myraytracer\utils\vec4.h
 	<math.h>
 
-1507650289 source:d:\benoit\c++projects\myraytracer\objects\sphere.cpp
+1507663258 source:d:\benoit\c++projects\myraytracer\objects\sphere.cpp
 	"Sphere.h"
 
-1507650243 d:\benoit\c++projects\myraytracer\objects\sphere.h
+1507666083 d:\benoit\c++projects\myraytracer\objects\sphere.h
 	<Object.h>
 
-1507649895 source:d:\benoit\c++projects\myraytracer\utils\ray.cpp
+1507660901 source:d:\benoit\c++projects\myraytracer\utils\ray.cpp
 	"Ray.h"
 
-1507649962 source:d:\benoit\c++projects\myraytracer\utils\vec4.cpp
+1507659721 source:d:\benoit\c++projects\myraytracer\utils\vec4.cpp
 	"Vec4.h"
+
+1507660223 d:\benoit\c++projects\myraytracer\utils\intersectiondata.h
+
+1507664336 d:\benoit\c++projects\myraytracer\materials\material.h
+	"../Utils/Color.h"
+
+1507664314 source:d:\benoit\c++projects\myraytracer\materials\material.cpp
+	"Material.h"
 
