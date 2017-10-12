@@ -13,6 +13,8 @@ class Object
         Object(Material *mat)
         : m_mat(mat) {}
 
+        virtual ~Object() = default;
+
         virtual bool intersect(const Ray& ray, IntersectionData *intersectionData) const = 0;
 
     protected:
