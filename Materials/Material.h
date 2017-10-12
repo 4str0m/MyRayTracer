@@ -1,18 +1,29 @@
 #ifndef MATERIAL_H
 #define MATERIAL_H
 
-#include "../Utils/Color.h"
+#include "../Lights/Light.h"
+#include "../Utils/Ray.h"
+#include "../Utils/IntersectionData.h"
 
-struct Material
+enum class MaterialType
 {
-    Color diffuseColor;
-    Color specularColor;
-    Color ambientColor;
+    PLAIN, DIFFUSE, REFLEXIVE
+};
+
+class Material
+{
 
     public:
-        Material(Color dc = {0}, Color sc = {0}, Color ac = {0})
-        : diffuseColor(dc), specularColor(sc), ambientColor(ac) {}
+        Material(MaterialType type)
+        : m_type(type) {}
 
+        virtual ~Material() = default;
+
+        virtual Color getColor(const Ray& ray, const IntersectionData& dat, const Light* light, bool isInShadow) const = 0;
+
+        inline MaterialType getType() const { return m_type; }
+    private:
+        const MaterialType m_type;
 };
 
 #endif // MATERIAL_H
