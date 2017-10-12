@@ -12,12 +12,16 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-std=c++14" />
+					<Add option="-std=c++11" />
 					<Add option="-g" />
 					<Add directory="Utils" />
 					<Add directory="Util" />
 					<Add directory="Objects" />
 					<Add directory="Materials" />
+					<Add directory="Lights" />
+					<Add directory="Scenes" />
+					<Add directory="Cameras" />
+					<Add directory="Scnenes" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -31,6 +35,10 @@
 					<Add directory="Util" />
 					<Add directory="Objects" />
 					<Add directory="Materials" />
+					<Add directory="Lights" />
+					<Add directory="Scenes" />
+					<Add directory="Cameras" />
+					<Add directory="Scnenes" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -41,16 +49,33 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Cameras/Camera.h" />
+		<Unit filename="Cameras/PerspectiveCamera.cpp" />
+		<Unit filename="Cameras/PerspectiveCamera.h" />
+		<Unit filename="Lights/Light.h" />
+		<Unit filename="Lights/PointLight.cpp" />
+		<Unit filename="Lights/PointLight.h" />
 		<Unit filename="Materials/Material.cpp" />
 		<Unit filename="Materials/Material.h" />
+		<Unit filename="Objects/ComplexObject.cpp" />
+		<Unit filename="Objects/ComplexObject.h" />
 		<Unit filename="Objects/Object.cpp" />
 		<Unit filename="Objects/Object.h" />
+		<Unit filename="Objects/Plane.cpp" />
+		<Unit filename="Objects/Plane.h" />
 		<Unit filename="Objects/Sphere.cpp" />
 		<Unit filename="Objects/Sphere.h" />
+		<Unit filename="Objects/Triangle.cpp" />
+		<Unit filename="Objects/Triangle.h" />
+		<Unit filename="Scenes/BasicScene.cpp" />
+		<Unit filename="Scenes/BasicScene.h" />
+		<Unit filename="Scenes/Scene.cpp" />
+		<Unit filename="Scenes/Scene.h" />
 		<Unit filename="Utils/Color.cpp" />
 		<Unit filename="Utils/Color.h" />
 		<Unit filename="Utils/Image.cpp" />
 		<Unit filename="Utils/Image.h" />
+		<Unit filename="Utils/IntersectionData.h" />
 		<Unit filename="Utils/Ray.cpp" />
 		<Unit filename="Utils/Ray.h" />
 		<Unit filename="Utils/Vec4.cpp" />
