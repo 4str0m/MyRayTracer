@@ -3,6 +3,7 @@
 const Color Color::BLACK(0);
 const Color Color::WHITE(1);
 const Color Color::RED(1,0,0);
+const Color Color::LIGHT_BLUE(.7, .7, 1);
 
 std::ostream& operator<<(std::ostream& os, const Color& c)
 {

@@ -11,6 +11,7 @@ struct Color
         static const Color BLACK;
         static const Color WHITE;
         static const Color RED;
+        static const Color LIGHT_BLUE;
 
         float r;
         float g;
