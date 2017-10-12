@@ -2,11 +2,6 @@
 
 #include "../Utils/MyMath.h"
 
-Vector3d reflect(const Vector3d& v1, const Vector3d& v2)
-{
-    return v1 - 2 * v2 * v1.dot(v2);
-}
-
 Color DiffuseMaterial::getColor(const Ray& ray, const IntersectionData& dat, const Light* light, bool isInShadow) const
 {
     Color finalColor(m_ambientColor);

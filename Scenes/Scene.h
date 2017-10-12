@@ -23,6 +23,9 @@ class Scene
 
         void render(std::string fileName) const;
 
+    private:
+        Color throwRay(const Ray& ray, size_t depth) const;
+
     protected:
         Camera* cam;
         Light* light;
