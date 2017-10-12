@@ -25,17 +25,17 @@ class Object
 
         virtual bool intersect(const Ray& ray, IntersectionData *intersectionData) const = 0;
 
-        Object& rotate(double angle, const Vector3d& axis)
+        virtual Object& rotate(double angle, const Vector3d& axis)
         {
             m_t.rotate(AngleAxisd(angle*M_PI/180., axis));
             return *this;
         }
-        Object& translate(const Vector3d& v)
+        virtual Object& translate(const Vector3d& v)
         {
             m_t.translate(v);
             return *this;
         }
-        Object& scale(const Vector3d& s)
+        virtual Object& scale(const Vector3d& s)
         {
             m_t.scale(s);
             return *this;

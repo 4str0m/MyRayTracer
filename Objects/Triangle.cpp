@@ -2,18 +2,23 @@
 
 bool Triangle::intersect(const Ray& ray, IntersectionData *intersectionData) const
 {
+    const static Vector3d transformedP0 = m_t * p0;
+    const static Vector3d transformedP1 = m_t * p1;
+    const static Vector3d transformedP2 = m_t * p2;
+    const static Vector3d transformedN  = m_t * n;
+
     /* first compute intersection with plane containing triangle */
-    double denom = ray.d.dot(n);
+    double denom = ray.d.dot(transformedN);
     if (denom == 0)
         return false;
-    double d = (p0 - ray.o).dot(n) / denom;
+    double d = (transformedP0 - ray.o).dot(transformedN) / denom;
     if (d < DELTA_INTERSECT)
         return false;
 
-    Vector3d u = p1 - p0;
-    Vector3d v = p2 - p0;
+    Vector3d u = transformedP1 - transformedP0;
+    Vector3d v = transformedP2 - transformedP0;
 
-    Vector3d w = ray.at(d) - p0;
+    Vector3d w = ray.at(d) - transformedP0;
 
     double uv = u.dot(v);
     double wv = w.dot(v);
@@ -34,7 +39,7 @@ bool Triangle::intersect(const Ray& ray, IntersectionData *intersectionData) con
     {
         intersectionData->d = d;
         intersectionData->pos = ray.at(d);
-        intersectionData->n = n;
+        intersectionData->n = transformedN;
         intersectionData->mat = m_mat;
     }
     return true;
