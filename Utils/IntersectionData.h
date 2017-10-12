@@ -8,6 +8,9 @@ class Material;
 
 struct IntersectionData
 {
+    public:
+        EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+
     double d;
     Vector3d pos;
     Vector3d n;

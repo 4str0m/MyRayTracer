@@ -7,7 +7,10 @@
 class Sphere : public Object
 {
     public:
-        Sphere(Material *mat, double r, Vector3d p)
+        EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+
+    public:
+        Sphere(Material *mat, double r, const Vector3d& p)
         : Object(mat), m_radius(r), m_pos(p) {}
 
         bool intersect(const Ray& ray, IntersectionData *intersectionData) const override;

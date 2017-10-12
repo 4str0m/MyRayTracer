@@ -6,8 +6,8 @@
 class PerspectiveCamera : public Camera
 {
     public:
-        PerspectiveCamera(size_t w, size_t h, Vector3d p, Vector3d dir, size_t focalLength)
-        :   Camera(w,h,p,dir)
+        PerspectiveCamera(size_t w, size_t h, const Vector3d& p, size_t focalLength)
+        :   Camera(w,h,p)
         ,   m_focalLength(focalLength) {}
 
         Ray getRayAtPixel(double x, double y) const override;

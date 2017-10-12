@@ -8,7 +8,10 @@ using namespace Eigen;
 struct Light
 {
     public:
-        Light(Vector3d p, Color c, double pow)
+        EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+
+    public:
+        Light(const Vector3d& p, Color c, double pow)
         : pos(p), c(c), power(pow) {}
 
     public:

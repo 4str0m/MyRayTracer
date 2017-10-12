@@ -3,7 +3,7 @@
 bool Sphere::intersect(const Ray& ray, IntersectionData *intersectionData) const
 {
     double a = ray.d.dot(ray.d);
-    Vector3d oc = ray.o - m_pos;
+    Vector3d oc = ray.o - m_t*m_pos;
     double b = 2*(ray.d.dot(oc));
     double c = oc.dot(oc) - m_radius*m_radius;
 
@@ -21,7 +21,7 @@ bool Sphere::intersect(const Ray& ray, IntersectionData *intersectionData) const
     {
         intersectionData->d = d1 < d2 && d1 > DELTA_INTERSECT ? d1 : d2;
         intersectionData->pos = ray.at(intersectionData->d);
-        intersectionData->n = (intersectionData->pos - m_pos).normalized();
+        intersectionData->n = (intersectionData->pos - m_t*m_pos).normalized();
         intersectionData->mat = m_mat;
     }
     return true;

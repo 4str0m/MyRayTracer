@@ -5,11 +5,12 @@
 #include <string>
 
 #include <cstdlib>
+#include <Eigen/StdVector>
 
-ComplexObject* ComplexObject::loadFromFile(Material *mat, std::string fileName)
+ComplexObject* ComplexObject::loadFromFile(Material *mat, const std::string& fileName)
 {
-    std::vector<Vector3d> vertices;
-    std::vector<Triangle> triangles;
+    std::vector<Vector3d, aligned_allocator<Vector3d>> vertices;
+    std::vector<Triangle*> triangles;
 
     std::ifstream file;
     std::string line;
@@ -26,13 +27,13 @@ ComplexObject* ComplexObject::loadFromFile(Material *mat, std::string fileName)
                 double x = strtod(line.c_str() + 2, &endptr);
                 double y = strtod(endptr, &endptr);
                 double z = strtod(endptr, &endptr);
-                vertices.push_back(Vector3d(x, y, z) * 200);
+                vertices.push_back(Vector3d(x, y, z) * 10);
             }
-            if (line[0] == 'v' && line[1] == 'n')
+            else if (line[0] == 'v' && line[1] == 'n')
             {
                 // handle case of normals
             }
-            if (line[0] == 'f' && line[1] == ' ')
+            else if (line[0] == 'f' && line[1] == ' ')
             {
                 char* endptr = nullptr;
                 unsigned long int vertId1 = strtoul(line.c_str()+2, &endptr, 10) - 1;
@@ -40,7 +41,7 @@ ComplexObject* ComplexObject::loadFromFile(Material *mat, std::string fileName)
                 unsigned long int vertId2 = strtoul(endptr, &endptr, 10) - 1;
                 while(*endptr != ' ') ++endptr;
                 unsigned long int vertId3 = strtoul(endptr, &endptr, 10) - 1;
-                triangles.push_back(Triangle(nullptr, vertices[vertId1], vertices[vertId2], vertices[vertId3]));
+                triangles.push_back(new Triangle(nullptr, vertices[vertId1], vertices[vertId2], vertices[vertId3]));
             }
         }
         file.close();
@@ -54,9 +55,9 @@ bool ComplexObject::intersect(const Ray& ray, IntersectionData *intersectionData
     IntersectionData temp;
     IntersectionData best;
     best.d = INT_MAX;
-    for(const Triangle& triangle: m_triangles)
+    for(const Triangle* triangle: m_triangles)
     {
-        if (triangle.intersect(ray, &temp))
+        if (triangle->intersect(ray, &temp))
         {
             hasIntersected = true;
             if (!intersectionData)

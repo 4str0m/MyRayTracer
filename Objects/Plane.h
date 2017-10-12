@@ -10,7 +10,10 @@ using namespace Eigen;
 class Plane : public Object
 {
     public:
-        Plane(Material *mat, Vector3d p, Vector3d n)
+        EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+
+    public:
+        Plane(Material *mat, const Vector3d& p, const Vector3d& n)
         : Object(mat), p(p), n(n) {}
 
         bool intersect(const Ray& ray, IntersectionData *intersectionData) const override;
