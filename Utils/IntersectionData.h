@@ -1,15 +1,16 @@
 #ifndef INTERSECTIONDATA_H
 #define INTERSECTIONDATA_H
 
-#include "Vec4.h"
+#include <Eigen/Dense>
+using namespace Eigen;
 
 class Material;
 
 struct IntersectionData
 {
     double d;
-    Vec4 pos;
-    Vec4 n;
+    Vector3d pos;
+    Vector3d n;
     const Material *mat;
 };
 

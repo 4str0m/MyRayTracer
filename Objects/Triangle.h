@@ -7,7 +7,7 @@
 class Triangle final : public Object
 {
     public:
-        Triangle(Material *mat, Vec4 p0, Vec4 p1, Vec4 p2)
+        Triangle(Material *mat, Vector3d p0, Vector3d p1, Vector3d p2)
         :   Object(mat)
         ,   p0(p0)
         ,   p1(p1)
@@ -17,11 +17,11 @@ class Triangle final : public Object
         bool intersect(const Ray& ray, IntersectionData *intersectionData) const override;
 
     private:
-        Vec4 p0;
-        Vec4 p1;
-        Vec4 p2;
+        Vector3d p0;
+        Vector3d p1;
+        Vector3d p2;
 
-        Vec4 n;
+        Vector3d n;
 };
 
 #endif // TRIANGLE_H

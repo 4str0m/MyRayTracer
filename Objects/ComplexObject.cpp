@@ -8,7 +8,7 @@
 
 ComplexObject* ComplexObject::loadFromFile(Material *mat, std::string fileName)
 {
-    std::vector<Vec4> vertices;
+    std::vector<Vector3d> vertices;
     std::vector<Triangle> triangles;
 
     std::ifstream file;
@@ -26,7 +26,7 @@ ComplexObject* ComplexObject::loadFromFile(Material *mat, std::string fileName)
                 double x = strtod(line.c_str() + 2, &endptr);
                 double y = strtod(endptr, &endptr);
                 double z = strtod(endptr, &endptr);
-                vertices.push_back(Vec4(x, y, z) * 200);
+                vertices.push_back(Vector3d(x, y, z) * 200);
             }
             if (line[0] == 'v' && line[1] == 'n')
             {

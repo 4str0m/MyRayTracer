@@ -6,7 +6,7 @@
 class PointLight : public Light
 {
     public:
-        PointLight(Vec4 pos, Color c, double pow)
+        PointLight(Vector3d pos, Color c, double pow)
         : Light(pos, c, pow) {}
 };
 

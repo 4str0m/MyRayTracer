@@ -1,20 +1,21 @@
 #ifndef RAY_H
 #define RAY_H
 
-#include "Vec4.h"
+#include <Eigen/Dense>
+using namespace Eigen;
 
 struct Ray
 {
-    Vec4 o;
-    Vec4 d;
+    Vector3d o;
+    Vector3d d;
 
     public:
-        Ray(Vec4 o, Vec4 d)
+        Ray(Vector3d o, Vector3d d)
         : o(o), d(d.normalized()) {}
 
-        double distanceFrom(const Vec4& p) const;
+        double distanceFrom(const Vector3d& p) const;
 
-        inline Vec4 at(double t) const { return o + d * t; }
+        inline Vector3d at(double t) const { return o + d * t; }
 };
 
 #endif // RAY_H

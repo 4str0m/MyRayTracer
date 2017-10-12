@@ -50,7 +50,7 @@ void Scene::render(std::string fileName) const
                     }
 
 
-                    Vec4 interToLight = light->pos - dat.pos;
+                    Vector3d interToLight = light->pos - dat.pos;
                     Ray shadowRay({dat.pos}, interToLight.normalized());
                     bool isShadow = false;
                     for(const auto& obj: objects)

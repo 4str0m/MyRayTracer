@@ -3,20 +3,21 @@
 
 #include "Object.h"
 
-#include "../Utils/Vec4.h"
+#include <Eigen/Dense>
+using namespace Eigen;
 
 
 class Plane : public Object
 {
     public:
-        Plane(Material *mat, Vec4 p, Vec4 n)
+        Plane(Material *mat, Vector3d p, Vector3d n)
         : Object(mat), p(p), n(n) {}
 
         bool intersect(const Ray& ray, IntersectionData *intersectionData) const override;
 
     private:
-        Vec4 p;
-        Vec4 n;
+        Vector3d p;
+        Vector3d n;
 };
 
 #endif // PLANE_H

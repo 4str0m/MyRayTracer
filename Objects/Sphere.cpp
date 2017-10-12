@@ -3,7 +3,7 @@
 bool Sphere::intersect(const Ray& ray, IntersectionData *intersectionData) const
 {
     double a = ray.d.dot(ray.d);
-    Vec4 oc = ray.o - m_pos;
+    Vector3d oc = ray.o - m_pos;
     double b = 2*(ray.d.dot(oc));
     double c = oc.dot(oc) - m_radius*m_radius;
 

@@ -10,10 +10,10 @@ bool Triangle::intersect(const Ray& ray, IntersectionData *intersectionData) con
     if (d < DELTA_INTERSECT)
         return false;
 
-    Vec4 u = p1 - p0;
-    Vec4 v = p2 - p0;
+    Vector3d u = p1 - p0;
+    Vector3d v = p2 - p0;
 
-    Vec4 w = ray.at(d) - p0;
+    Vector3d w = ray.at(d) - p0;
 
     double uv = u.dot(v);
     double wv = w.dot(v);

@@ -1,6 +1,6 @@
 #include "Ray.h"
 
-double Ray::distanceFrom(const Vec4& p) const
+double Ray::distanceFrom(const Vector3d& p) const
 {
-    return (o - p).cross(d).mag() / d.mag();
+    return (o - p).cross(d).norm() / d.norm();
 }

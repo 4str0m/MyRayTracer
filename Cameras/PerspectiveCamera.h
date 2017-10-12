@@ -6,7 +6,7 @@
 class PerspectiveCamera : public Camera
 {
     public:
-        PerspectiveCamera(size_t w, size_t h, Vec4 p, Vec4 dir, size_t focalLength)
+        PerspectiveCamera(size_t w, size_t h, Vector3d p, Vector3d dir, size_t focalLength)
         :   Camera(w,h,p,dir)
         ,   m_focalLength(focalLength) {}
 
