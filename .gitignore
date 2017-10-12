@@ -5,3 +5,5 @@ bin/
 *.cbp
 *.depend
 *.layout
+*.obj
+*.ppm
