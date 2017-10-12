@@ -2,9 +2,15 @@
 #define VEC4_H
 
 #include <math.h>
+#include <iostream>
 
 class Vec4
 {
+    public:
+        static const Vec4 Z;
+        static const Vec4 Y;
+        static const Vec4 X;
+
     public:
         Vec4()
         : x(0), y(0), z(0), w(0) {}
@@ -16,6 +22,7 @@ class Vec4
         Vec4 operator+(const Vec4& o) const;
         Vec4 operator-(const Vec4& o) const;
         Vec4 operator*(double d) const;
+        Vec4 operator/(double d) const;
 
         Vec4& operator+=(const Vec4& o);
         Vec4& operator-=(const Vec4& o);
@@ -36,5 +43,7 @@ class Vec4
         double z;
         double w; // unused
 };
+
+std::ostream& operator<<(std::ostream& os, const Vec4& v);
 
 #endif // VEC4_H

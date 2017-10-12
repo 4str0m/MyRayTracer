@@ -7,9 +7,14 @@
 
 struct Color
 {
-    float r;
-    float g;
-    float b;
+    public:
+        static const Color BLACK;
+        static const Color WHITE;
+        static const Color RED;
+
+        float r;
+        float g;
+        float b;
 
     public:
         Color(float gray = 0.0)

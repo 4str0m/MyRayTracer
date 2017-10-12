@@ -2,7 +2,8 @@
 #define INTERSECTIONDATA_H
 
 #include "Vec4.h"
-#include "../Materials/Material.h"
+
+class Material;
 
 struct IntersectionData
 {

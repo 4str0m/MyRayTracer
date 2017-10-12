@@ -1,5 +1,9 @@
 #include "Vec4.h"
 
+const Vec4 Vec4::Z(0, 0, 1);
+const Vec4 Vec4::Y(0, 1, 0);
+const Vec4 Vec4::X(1, 0, 0);
+
 Vec4 Vec4::operator-() const
 {
     return *this * -1;
@@ -16,6 +20,10 @@ Vec4 Vec4::operator-(const Vec4& o) const
 Vec4 Vec4::operator*(double d) const
 {
     return Vec4(x*d, y*d, z*d);
+}
+Vec4 Vec4::operator/(double d) const
+{
+    return operator*(1./d);
 }
 
 Vec4& Vec4::operator+=(const Vec4& o)
@@ -64,6 +72,11 @@ double Vec4::dot(const Vec4& o) const
 
 Vec4 Vec4::normalized() const
 {
-    double m = mag();
-    return Vec4(x / m, y / m, z / m);
+    return *this / mag();
+}
+
+std::ostream& operator<<(std::ostream& os, const Vec4& v)
+{
+    os << v.x << ", " << v.y << ", " << v.z;
+    return os;
 }
