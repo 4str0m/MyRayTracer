@@ -6,14 +6,14 @@
 class PerspectiveCamera : public Camera
 {
     public:
-        PerspectiveCamera(size_t w, size_t h, const Vector3d& p, size_t focalLength)
+        PerspectiveCamera(size_t w, size_t h, const Vector3f& p, size_t focalLength)
         :   Camera(w,h,p)
         ,   m_focalLength(focalLength) {}
 
-        Ray getRayAtPixel(double x, double y) const override;
+        Ray getRayAtPixel(float x, float y) const override;
 
     private:
-        double m_focalLength;
+        float m_focalLength;
 };
 
 #endif // PERSPECTIVECAMERA_H
