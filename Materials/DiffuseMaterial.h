@@ -8,20 +8,23 @@
 class DiffuseMaterial : public Material
 {
     public:
-        DiffuseMaterial(Color dc = {0}, Color sc = {0}, Color ac = {0}, double sp = 5)
-        :   Material(MaterialType::DIFFUSE)
-        ,   m_diffuseColor(dc)
+
+        DiffuseMaterial(Color dc, Color sc, Color ac, float sp = 5)
+        :   m_diffuseColor(dc)
         ,   m_specularColor(sc)
         ,   m_ambientColor(ac)
         ,   m_specularPower(sp) {}
 
-        Color getColor(const Ray& ray, const IntersectionData& dat, const Light* light, bool isInShadow) const override;
+        virtual Color getColor(const Ray* ray,
+                               const IntersectionData* dat,
+                               const Scene* scene,
+                               int depth) const override;
 
     private:
         const Color m_diffuseColor;
         const Color m_specularColor;
         const Color m_ambientColor;
-        const double m_specularPower;
+        const float m_specularPower;
 };
 
 #endif // DIFFUSEMATERIAL_H

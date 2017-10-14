@@ -9,10 +9,12 @@ class PlainColorMaterial : public Material
 {
     public:
         PlainColorMaterial(Color c)
-        :   Material(MaterialType::PLAIN)
-        ,   m_color(c) {}
+        :   m_color(c) {}
 
-        Color getColor(const Ray& ray, const IntersectionData& dat, const Light* light, bool isInShadow) const override
+        virtual Color getColor(const Ray* ray,
+                               const IntersectionData* dat,
+                               const Scene* scene,
+                               int depth) const override
         {
             return m_color;
         }

@@ -1,18 +1,24 @@
 #ifndef REFLEXIVEMATERIAL_H
 #define REFLEXIVEMATERIAL_H
 
-#include <Material.h>
-
+#include "Material.h"
+#include "DiffuseMaterial.h"
 
 class ReflexiveMaterial : public Material
 {
     public:
-        ReflexiveMaterial(Color dc = {0}, Color sc = {0}, Color ac = {0}, double sp = 5)
-        :   Material(MaterialType::REFLEXIVE) {}
+        ReflexiveMaterial(Color dc = {0}, Color sc = {0}, Color ac = {0}, float sp = 5, float factor = .5)
+        :   m_diffusePart(dc , sc, ac, sp)
+        ,   m_factor(factor) {}
 
-        Color getColor(const Ray& ray, const IntersectionData& dat, const Light* light, bool isInShadow) const override;
+        virtual Color getColor(const Ray* ray,
+                               const IntersectionData* dat,
+                               const Scene* scene,
+                               int depth) const override;
 
     private:
+        DiffuseMaterial m_diffusePart;
+        float m_factor;
 };
 
 #endif // REFLEXIVEMATERIAL_H

@@ -5,25 +5,20 @@
 #include "../Utils/Ray.h"
 #include "../Utils/IntersectionData.h"
 
-enum class MaterialType
-{
-    PLAIN, DIFFUSE, REFLEXIVE
-};
+class Scene;
 
 class Material
 {
 
     public:
-        Material(MaterialType type)
-        : m_type(type) {}
+        Material() = default;
 
         virtual ~Material() = default;
 
-        virtual Color getColor(const Ray& ray, const IntersectionData& dat, const Light* light, bool isInShadow) const = 0;
-
-        inline MaterialType getType() const { return m_type; }
-    private:
-        const MaterialType m_type;
+        virtual Color getColor(const Ray* ray,
+                               const IntersectionData* dat,
+                               const Scene* scene,
+                               int depth) const = 0;
 };
 
 #endif // MATERIAL_H
