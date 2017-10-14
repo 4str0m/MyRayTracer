@@ -3,12 +3,15 @@
 #include <climits>
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 #include <string>
+
+#include "../Utils/Timer.h"
 #include "../Utils/Image.h"
 
 #define ANTI_ALIASING_FACTOR 2
 
-void printProgress(double percent)
+void printProgress(float percent)
 {
     system("cls");
     int numberOFBars = (int)(percent * 10);
@@ -31,28 +34,34 @@ Scene::~Scene()
 
 void Scene::render(std::string fileName) const
 {
+    Timer::get().set_clock();
+
     Image img(cam->getWidth(), cam->getHeight());
+
+    float antiAliasingRatio = 1. / ANTI_ALIASING_FACTOR;
 
     for(size_t y = 0; y < cam->getHeight(); ++y)
     {
         for(size_t x = 0; x < cam->getWidth(); ++x)
         {
             Color finalColor;
-            for(double dy = 0.; dy < 1.; dy += 1. / ANTI_ALIASING_FACTOR)
+            for(float dy = 0.; dy < 1.; dy += antiAliasingRatio)
             {
-                for(double dx = 0.; dx < 1.; dx += 1. / ANTI_ALIASING_FACTOR)
+                for(float dx = 0.; dx < 1.; dx += antiAliasingRatio)
                 {
+
                     Ray r = cam->getRayAtPixel(x+dx, y+dy);
                     finalColor += throwRay(r, 1);
                 }
             }
 
-            img.setPixel(x, y, (finalColor / ANTI_ALIASING_FACTOR / ANTI_ALIASING_FACTOR).clamp());
+            img.setPixel(x, y, (finalColor * antiAliasingRatio * antiAliasingRatio).clamp());
         }
-        printProgress((double)y / cam->getHeight());
+        printProgress((float)y / cam->getHeight());
     }
-
+    std::cout << "Finished rendering image !! " << Timer::get().elapsed_time() << std::endl;
     img.saveImage(fileName);
+    std::cout << "Finished saving image !!" << std::endl;
 }
 
 Color Scene::throwRay(const Ray& ray, size_t depth) const
@@ -77,28 +86,5 @@ Color Scene::throwRay(const Ray& ray, size_t depth) const
         return Color::LIGHT_BLUE;
     }
 
-    switch (dat.mat->getType())
-    {
-    case MaterialType::PLAIN:
-        return dat.mat->getColor(ray, dat, light, false);
-
-    case MaterialType::DIFFUSE:
-    {
-        Vector3d interToLight = light->pos - dat.pos;
-        Ray shadowRay(dat.pos, interToLight.normalized());
-        bool isShadow = false;
-        for(const auto& obj: objects)
-        {
-            if (obj->intersect(shadowRay, nullptr))
-            {
-                isShadow = true;
-                break;
-            }
-        }
-        return dat.mat->getColor(ray, dat, light, isShadow);
-    }
-    case MaterialType::REFLEXIVE:
-        return throwRay(Ray(dat.pos, reflect(ray.d, dat.n)), depth+1);
-    }
-    return Color::BLACK;
+    return dat.mat->getColor(&ray, &dat, this, depth);
 }
