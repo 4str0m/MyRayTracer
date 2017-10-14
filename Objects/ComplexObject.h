@@ -18,16 +18,16 @@ class ComplexObject final : public Object
 
         bool intersect(const Ray& ray, IntersectionData *intersectionData) const override;
 
-        Object& rotate(double angle, const Vector3d& axis) override
+        Object& rotate(float angle, const Vector3f& axis) override
         {
-            m_t.rotate(AngleAxisd(angle*M_PI/180., axis));
+            m_t.rotate(AngleAxisf(angle*M_PI/180., axis));
             for(Triangle* triangle: m_triangles)
             {
                 triangle->rotate(angle, axis);
             }
             return *this;
         }
-        Object& translate(const Vector3d& v) override
+        Object& translate(const Vector3f& v) override
         {
             m_t.translate(v);
             for(Triangle* triangle: m_triangles)
@@ -36,7 +36,7 @@ class ComplexObject final : public Object
             }
             return *this;
         }
-        Object& scale(const Vector3d& s) override
+        Object& scale(const Vector3f& s) override
         {
             m_t.scale(s);
             for(Triangle* triangle: m_triangles)
@@ -55,5 +55,5 @@ class ComplexObject final : public Object
         std::vector<Triangle*> m_triangles;
 };
 
-double stod(const std::string& str, std::string::size_type *pos = nullptr);
+float stod(const std::string& str, std::string::size_type *pos = nullptr);
 #endif // COMPLEXOBJECT_H

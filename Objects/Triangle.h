@@ -10,7 +10,7 @@ class Triangle final : public Object
         EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 
     public:
-        Triangle(Material *mat, const Vector3d& p0, const Vector3d& p1, const Vector3d& p2)
+        Triangle(Material *mat, const Vector3f& p0, const Vector3f& p1, const Vector3f& p2)
         :   Object(mat)
         ,   p0(p0)
         ,   p1(p1)
@@ -22,11 +22,11 @@ class Triangle final : public Object
         bool intersect(const Ray& ray, IntersectionData *intersectionData) const override;
 
     private:
-        Vector3d p0;
-        Vector3d p1;
-        Vector3d p2;
+        Vector3f p0;
+        Vector3f p1;
+        Vector3f p2;
 
-        Vector3d n;
+        Vector3f n;
 };
 
 #endif // TRIANGLE_H

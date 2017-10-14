@@ -1,7 +1,7 @@
 #ifndef INTERSECTIONDATA_H
 #define INTERSECTIONDATA_H
 
-#include <Eigen/Dense>
+#include <Eigen/Geometry>
 using namespace Eigen;
 
 class Material;
@@ -11,9 +11,9 @@ struct IntersectionData
     public:
         EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 
-    double d;
-    Vector3d pos;
-    Vector3d n;
+    float d;
+    Vector3f pos;
+    Vector3f n;
     const Material *mat;
 };
 

@@ -1,21 +1,21 @@
 #ifndef MYMATH_H
 #define MYMATH_H
 
-#include <Eigen/Dense>
+#include <Eigen/Geometry>
 using namespace Eigen;
 
-static constexpr double M_PI = 3.141592653589793238462643383279;
+static constexpr float M_PI = 3.141592653589793238462643383279;
 
 namespace Eigen
 {
 
-    Vector3d reflect(const Vector3d& v1, const Vector3d& v2);
+    Vector3f reflect(const Vector3f& v1, const Vector3f& v2);
 
 }
 
 namespace std
 {
-    double clamp(double v, double min, double max);
+    float clamp(float v, float min, float max);
 }
 
 #endif // MYMATH_H

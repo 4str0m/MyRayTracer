@@ -1,7 +1,7 @@
 #ifndef LIGHT_H
 #define LIGHT_H
 
-#include <Eigen/Dense>
+#include <Eigen/Geometry>
 using namespace Eigen;
 #include "../Utils/Color.h"
 
@@ -11,13 +11,13 @@ struct Light
         EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 
     public:
-        Light(const Vector3d& p, Color c, double pow)
+        Light(const Vector3f& p, Color c, float pow)
         : pos(p), c(c), power(pow) {}
 
     public:
-        Vector3d pos;
+        Vector3f pos;
         Color c;
-        double power;
+        float power;
 };
 
 #endif // LIGHT_H

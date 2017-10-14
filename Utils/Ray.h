@@ -1,7 +1,7 @@
 #ifndef RAY_H
 #define RAY_H
 
-#include <Eigen/Dense>
+#include <Eigen/Geometry>
 using namespace Eigen;
 
 struct Ray
@@ -9,16 +9,16 @@ struct Ray
     public:
         EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 
-    Vector3d o;
-    Vector3d d;
+    Vector3f o;
+    Vector3f d;
 
     public:
-        Ray(const Vector3d& o, const Vector3d& d)
+        Ray(const Vector3f& o, const Vector3f& d)
         : o(o), d(d.normalized()) {}
 
-        double distanceFrom(const Vector3d& p) const;
+        float distanceFrom(const Vector3f& p) const;
 
-        inline Vector3d at(double t) const { return o + d * t; }
+        inline Vector3f at(float t) const { return o + d * t; }
 };
 
 #endif // RAY_H

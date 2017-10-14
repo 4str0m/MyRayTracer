@@ -1,7 +1,7 @@
 #ifndef OBJECT_H
 #define OBJECT_H
 
-#include <Eigen/Dense>
+#include <Eigen/Geometry>
 using namespace Eigen;
 
 #include "../Utils/Ray.h"
@@ -19,23 +19,23 @@ class Object
     public:
         Object(Material *mat)
         : m_mat(mat)
-        , m_t(Matrix<double, 3, 3>::Identity()) {}
+        , m_t(Matrix<float, 3, 3>::Identity()) {}
 
         virtual ~Object() = default;
 
         virtual bool intersect(const Ray& ray, IntersectionData *intersectionData) const = 0;
 
-        virtual Object& rotate(double angle, const Vector3d& axis)
+        virtual Object& rotate(float angle, const Vector3f& axis)
         {
-            m_t.rotate(AngleAxisd(angle*M_PI/180., axis));
+            m_t.rotate(AngleAxisf(angle*M_PI/180., axis));
             return *this;
         }
-        virtual Object& translate(const Vector3d& v)
+        virtual Object& translate(const Vector3f& v)
         {
             m_t.translate(v);
             return *this;
         }
-        virtual Object& scale(const Vector3d& s)
+        virtual Object& scale(const Vector3f& s)
         {
             m_t.scale(s);
             return *this;
@@ -43,7 +43,7 @@ class Object
 
     protected:
         const Material *m_mat;
-        Transform<double, 3, Affine> m_t;
+        Transform<float, 3, Affine> m_t;
 };
 
 #endif // OBJECT_H

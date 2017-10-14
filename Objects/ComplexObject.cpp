@@ -9,7 +9,7 @@
 
 ComplexObject* ComplexObject::loadFromFile(Material *mat, const std::string& fileName)
 {
-    std::vector<Vector3d, aligned_allocator<Vector3d>> vertices;
+    std::vector<Vector3f, aligned_allocator<Vector3f>> vertices;
     std::vector<Triangle*> triangles;
 
     std::ifstream file;
@@ -24,10 +24,10 @@ ComplexObject* ComplexObject::loadFromFile(Material *mat, const std::string& fil
             if (line[0] == 'v' && line[1] == ' ')
             {
                 char* endptr = nullptr;
-                double x = strtod(line.c_str() + 2, &endptr);
-                double y = strtod(endptr, &endptr);
-                double z = strtod(endptr, &endptr);
-                vertices.push_back(Vector3d(x, y, z) * 10);
+                float x = strtod(line.c_str() + 2, &endptr);
+                float y = strtod(endptr, &endptr);
+                float z = strtod(endptr, &endptr);
+                vertices.push_back(Vector3f(x, y, z) * 10);
             }
             else if (line[0] == 'v' && line[1] == 'n')
             {

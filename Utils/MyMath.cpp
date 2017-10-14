@@ -2,7 +2,7 @@
 
 namespace Eigen
 {
-    Vector3d reflect(const Vector3d& v1, const Vector3d& v2)
+    Vector3f reflect(const Vector3f& v1, const Vector3f& v2)
     {
         return v1 - 2 * v2 * v1.dot(v2);
     }
@@ -11,5 +11,5 @@ namespace Eigen
 
 namespace std
 {
-    double clamp(double v, double min, double max) { return v < max ? v < min ? min : v : max; }
+    float clamp(float v, float min, float max) { return v < max ? v < min ? min : v : max; }
 }
