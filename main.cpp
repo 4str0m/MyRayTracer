@@ -1,11 +1,18 @@
 #include <iostream>
 
-#include "Scenes/BasicScene.h"
-#include "Scenes/SphereScene.h"
+#include "Scenes/Scene.h"
+#include "Scenes/SceneLoader.h"
 
 int main()
 {
-    BasicScene scene;
-    scene.render("reflexiveSphere");
+    Scene scene;
+    if (SceneLoader::loadSceneFromFile("sample_scene.txt", scene))
+    {
+        scene.render("testPerformance");
+    }
+    else
+    {
+        std::cout << "unable to load scene" << std::endl;
+    }
     return 0;
 }

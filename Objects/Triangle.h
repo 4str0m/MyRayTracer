@@ -10,7 +10,7 @@ class Triangle final : public Object
         EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 
     public:
-        Triangle(Material *mat, const Vector3f& p0, const Vector3f& p1, const Vector3f& p2)
+        Triangle(const Material *mat, const Vector3f& p0, const Vector3f& p1, const Vector3f& p2)
         :   Object(mat)
         ,   p0(p0)
         ,   p1(p1)

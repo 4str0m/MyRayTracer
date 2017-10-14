@@ -9,9 +9,11 @@ class Scene;
 
 class Material
 {
-
     public:
-        Material() = default;
+        const std::string name;
+
+        Material(const std::string& name)
+        :   name(name) {}
 
         virtual ~Material() = default;
 

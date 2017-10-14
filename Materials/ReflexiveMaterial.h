@@ -7,8 +7,9 @@
 class ReflexiveMaterial : public Material
 {
     public:
-        ReflexiveMaterial(Color dc = {0}, Color sc = {0}, Color ac = {0}, float sp = 5, float factor = .5)
-        :   m_diffusePart(dc , sc, ac, sp)
+        ReflexiveMaterial(const std::string& name, Color dc = {0}, Color sc = {0}, Color ac = {0}, float sp = 5, float factor = .5)
+        :   Material(name)
+        ,   m_diffusePart(name, dc , sc, ac, sp)
         ,   m_factor(factor) {}
 
         virtual Color getColor(const Ray* ray,

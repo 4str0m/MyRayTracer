@@ -8,8 +8,9 @@
 class PlainColorMaterial : public Material
 {
     public:
-        PlainColorMaterial(Color c)
-        :   m_color(c) {}
+        PlainColorMaterial(const std::string& name, Color c)
+        :   Material(name)
+        ,   m_color(c) {}
 
         virtual Color getColor(const Ray* ray,
                                const IntersectionData* dat,

@@ -1,9 +1,7 @@
 #include "Scene.h"
 
-#include <climits>
 #include <stdlib.h>
 #include <stdio.h>
-#include <time.h>
 #include <string>
 
 #include "../Utils/Timer.h"
@@ -23,8 +21,14 @@ void printProgress(float percent)
 
 Scene::~Scene()
 {
-    delete cam;
-    delete light;
+    if (cam)
+    {
+        delete cam;
+    }
+    if (light)
+    {
+        delete light;
+    }
     for(size_t i = 0; i < objects.size(); ++i)
         delete objects[i];
 
@@ -49,7 +53,6 @@ void Scene::render(std::string fileName) const
             {
                 for(float dx = 0.; dx < 1.; dx += antiAliasingRatio)
                 {
-
                     Ray r = cam->getRayAtPixel(x+dx, y+dy);
                     finalColor += throwRay(r, 1);
                 }
@@ -87,4 +90,16 @@ Color Scene::throwRay(const Ray& ray, size_t depth) const
     }
 
     return dat.mat->getColor(&ray, &dat, this, depth);
+}
+
+const Material* Scene::getMaterialByName(const std::string& name) const
+{
+    for(const Material* mat: mats)
+    {
+        if (mat->name == name)
+        {
+            return mat;
+        }
+    }
+    return nullptr;
 }

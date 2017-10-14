@@ -11,7 +11,7 @@ struct Light
         EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 
     public:
-        Light(const Vector3f& p, Color c, float pow)
+        Light(const Vector3f& p, const Color& c, float pow)
         : pos(p), c(c), power(pow) {}
 
     public:

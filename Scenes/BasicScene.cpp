@@ -13,13 +13,13 @@
 BasicScene::BasicScene()
 {
     int focalRatio = 1;
-    int wh = 512;
+    int wh = 128;
     cam = new PerspectiveCamera(wh, wh, {50, 50, -100}, wh*focalRatio);
 
-    mats.push_back(new DiffuseMaterial({1, 0, 0}, {1}, {.1}));
-    mats.push_back(new DiffuseMaterial({0, 1, 0}, {1}, {.1}));
-    mats.push_back(new DiffuseMaterial({0, 0, 0}, {.2}, {.1}, 2));
-    mats.push_back(new ReflexiveMaterial({0, .5, 1}, {1}, {.2}, 10, .2));
+//    mats.push_back(new DiffuseMaterial({1, 0, 0}, {1}, {.1}));
+//    mats.push_back(new DiffuseMaterial({0, 1, 0}, {1}, {.1}));
+//    mats.push_back(new DiffuseMaterial({0, 0, 0}, {.2}, {.1}, 2));
+//    mats.push_back(new ReflexiveMaterial({0, .5, 1}, {1}, {.2}, 10, .2));
 
     //objects.push_back(new Triangle(mats[0], {}, {-400, 0, 0}, {0, 400, 0}));
 

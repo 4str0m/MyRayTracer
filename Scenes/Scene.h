@@ -12,13 +12,26 @@
 class Scene
 {
     public:
-        Scene() {}
+        Scene() = default;
 
         virtual ~Scene();
 
-        void addObject(Object* obj)
+        Scene& addObject(Object* obj)
         {
-            objects.push_back(obj);
+            if (obj) objects.push_back(obj);
+            return *this;
+        }
+
+        Scene& addLight(Light* l)
+        {
+            if (l) light = l;
+            return *this;
+        }
+
+        Scene& addMaterial(Material* mat)
+        {
+            if (mat) mats.push_back(mat);
+            return *this;
         }
 
         void render(std::string fileName) const;
@@ -28,9 +41,11 @@ class Scene
         const Light* getLight() const { return light; }
         const std::vector<Object*>& getObjects() const { return objects; }
 
+        const Material* getMaterialByName(const std::string& name) const;
+
     protected:
-        Camera* cam;
-        Light* light;
+        Camera* cam = nullptr;
+        Light* light = nullptr;
         std::vector<Object*> objects;
         std::vector<Material*> mats;
 };

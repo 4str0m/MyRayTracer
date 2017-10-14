@@ -17,7 +17,7 @@ class Object
         EIGEN_MAKE_ALIGNED_OPERATOR_NEW
 
     public:
-        Object(Material *mat)
+        Object(const Material *mat)
         : m_mat(mat)
         , m_t(Matrix<float, 3, 3>::Identity()) {}
 

@@ -9,8 +9,9 @@ class DiffuseMaterial : public Material
 {
     public:
 
-        DiffuseMaterial(Color dc, Color sc, Color ac, float sp = 5)
-        :   m_diffuseColor(dc)
+        DiffuseMaterial(const std::string& name, Color dc, Color sc, Color ac, float sp = 5)
+        :   Material(name)
+        ,   m_diffuseColor(dc)
         ,   m_specularColor(sc)
         ,   m_ambientColor(ac)
         ,   m_specularPower(sp) {}
