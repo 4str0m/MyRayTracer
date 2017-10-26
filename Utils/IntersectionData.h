@@ -4,6 +4,8 @@
 #include <Eigen/Geometry>
 using namespace Eigen;
 
+#include "Color.h"
+
 class Material;
 
 struct IntersectionData
@@ -14,7 +16,9 @@ struct IntersectionData
     float d;
     Vector3f pos;
     Vector3f n;
+    Color c = Color::BLACK;
     const Material *mat;
+    float blendFactor = 0.5;
 };
 
 #endif // INTERSECTIONDATA_H

@@ -18,7 +18,8 @@ Color DiffuseMaterial::getColor(const Ray* ray, const IntersectionData* dat, con
         }
     }
 
-    Color finalColor(m_ambientColor);
+    Color diffuseColor = m_diffuseColor * dat->blendFactor + dat->c * (1-dat->blendFactor);
+    Color finalColor(diffuseColor * m_ambientFactor);
 
     if(isInShadow)
         return finalColor;
@@ -30,7 +31,7 @@ Color DiffuseMaterial::getColor(const Ray* ray, const IntersectionData* dat, con
     float cosAlpha = std::clamp(ray->d.dot(R), 0, 1);
 
     Color commonPart = scene->getLight()->c * scene->getLight()->power / (dist * dist);
-    finalColor +=   m_diffuseColor * cosTheta * commonPart
+    finalColor +=   diffuseColor * cosTheta * commonPart
                     + m_specularColor  * pow(cosAlpha, m_specularPower) * commonPart;
 
     return finalColor;

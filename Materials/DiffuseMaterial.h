@@ -9,11 +9,11 @@ class DiffuseMaterial : public Material
 {
     public:
 
-        DiffuseMaterial(const std::string& name, Color dc, Color sc, Color ac, float sp = 5)
+        DiffuseMaterial(const std::string& name, Color dc, Color sc, float af, float sp = 5)
         :   Material(name)
         ,   m_diffuseColor(dc)
         ,   m_specularColor(sc)
-        ,   m_ambientColor(ac)
+        ,   m_ambientFactor(af)
         ,   m_specularPower(sp) {}
 
         virtual Color getColor(const Ray* ray,
@@ -24,7 +24,7 @@ class DiffuseMaterial : public Material
     private:
         const Color m_diffuseColor;
         const Color m_specularColor;
-        const Color m_ambientColor;
+        const float m_ambientFactor;
         const float m_specularPower;
 };
 
