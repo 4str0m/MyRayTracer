@@ -23,6 +23,7 @@ class Camera
         ,   m_upDir(Vector3f::UnitY())
         {
             Transform<float, 3, Affine> t(Matrix<float, 3, 3>::Identity());
+            t.rotate(AngleAxisf(-20*M_PI/180.f, Vector3f::UnitY()));
             t.rotate(AngleAxisf(20*M_PI/180.f, Vector3f::UnitX()));
             m_eyeDir = t*m_eyeDir;
             m_rightDir = t*m_rightDir;

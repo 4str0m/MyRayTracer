@@ -34,6 +34,9 @@ Scene::~Scene()
 
     for(size_t i = 0; i < mats.size(); ++i)
         delete mats[i];
+
+    for(size_t i = 0; i < texs.size(); ++i)
+        delete texs[i];
 }
 
 void Scene::render(std::string fileName) const

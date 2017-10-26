@@ -7,6 +7,7 @@
 #include "../Lights/Light.h"
 #include "../Cameras/Camera.h"
 #include "../Objects/Object.h"
+#include "../Utils/Texture.h"
 
 
 class Scene
@@ -33,6 +34,11 @@ class Scene
             if (mat) mats.push_back(mat);
             return *this;
         }
+        Scene& addTexture(Texture* tex)
+        {
+            if (tex) texs.push_back(tex);
+            return *this;
+        }
 
         void render(std::string fileName) const;
 
@@ -48,6 +54,7 @@ class Scene
         Light* light = nullptr;
         std::vector<Object*> objects;
         std::vector<Material*> mats;
+        std::vector<Texture*> texs;
 };
 
 #endif // SCENE_H

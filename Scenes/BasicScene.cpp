@@ -13,34 +13,36 @@
 BasicScene::BasicScene()
 {
     int focalRatio = 1;
-    int wh = 128;
-    cam = new PerspectiveCamera(wh, wh, {50, 50, -100}, wh*focalRatio);
+    int wh = 1024;
+    cam = new PerspectiveCamera(wh, wh, {100, 80, -150}, wh*focalRatio);
 
-//    mats.push_back(new DiffuseMaterial({1, 0, 0}, {1}, {.1}));
-//    mats.push_back(new DiffuseMaterial({0, 1, 0}, {1}, {.1}));
-//    mats.push_back(new DiffuseMaterial({0, 0, 0}, {.2}, {.1}, 2));
-//    mats.push_back(new ReflexiveMaterial({0, .5, 1}, {1}, {.2}, 10, .2));
+    addMaterial(new DiffuseMaterial("", {1, 0, 0}, {1}, .2));
+    addMaterial(new DiffuseMaterial("", {0, 1, 0}, {1}, .2));
+    addMaterial(new DiffuseMaterial("", {.5, .5, .5}, {.2}, .1, 2));
+    addMaterial(new ReflexiveMaterial("", {.1, .5, .3}, {1}, .2, 10, .5));
 
-    //objects.push_back(new Triangle(mats[0], {}, {-400, 0, 0}, {0, 400, 0}));
+    addTexture(new Texture("res/box.jpg"));
+
+    addObject(createCube(mats[0], 50, texs[0]));
 
     //Object *cube = ComplexObject::loadFromFile(mats[0], "cube.obj");
     //cube->rotate(0, Vector3f::UnitY());
     //objects.push_back(cube);
 
-    float sphereRadius = 10;
+    float sphereRadius = 15;
     for(int i = 0; i < 3; ++i)
     {
         for(int j = 0; j < 3; ++j)
         {
             if (i*j == 1)
-                objects.push_back(new Sphere(mats[1], sphereRadius*2, {sphereRadius*3*i, sphereRadius*2, sphereRadius*3*j}));
+                addObject(new Sphere(mats[3], sphereRadius*2, {sphereRadius*3*i + 20, sphereRadius*2-25, sphereRadius*3*j+40}));
             else
-                objects.push_back(new Sphere(mats[2], sphereRadius, {sphereRadius*3*i, sphereRadius, sphereRadius*3*j}));
+                addObject(new Sphere(mats[1], sphereRadius, {sphereRadius*3*i + 20, sphereRadius-25, sphereRadius*3*j+40}));
         }
     }
 
-    objects.push_back(new Plane(mats[3], {0, 0, 0}, {0, 1, 0}));
+    addObject(new Plane(mats[2], {0, -25, 0}, {0, 1, 0}));
 
     float offset = 100;
-    light = new PointLight({offset, offset, offset}, {1.}, 20000);
+    light = new PointLight({offset, 2*offset, offset/2}, {1.}, 20000);
 }
