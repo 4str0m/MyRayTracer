@@ -13,7 +13,7 @@
 BasicScene::BasicScene()
 {
     int focalRatio = 1;
-    int wh = 1024;
+    int wh = 128;
     cam = new PerspectiveCamera(wh, wh, {100, 80, -150}, wh*focalRatio);
 
     addMaterial(new DiffuseMaterial("", {1, 0, 0}, {1}, .2));

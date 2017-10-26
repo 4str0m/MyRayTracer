@@ -25,10 +25,10 @@ Color DiffuseMaterial::getColor(const Ray* ray, const IntersectionData* dat, con
         return finalColor;
 
     float dist = interToLight.norm();
-    float cosTheta = std::clamp(interToLight.normalized().dot(dat->n), 0, 1);
+    float cosTheta = math::clamp(interToLight.normalized().dot(dat->n), 0, 1);
 
     Vector3f R = reflect(interToLight.normalized(), dat->n);
-    float cosAlpha = std::clamp(ray->d.dot(R), 0, 1);
+    float cosAlpha = math::clamp(ray->d.dot(R), 0, 1);
 
     Color commonPart = scene->getLight()->c * scene->getLight()->power / (dist * dist);
     finalColor +=   diffuseColor * cosTheta * commonPart

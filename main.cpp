@@ -6,11 +6,15 @@
 
 #include "Utils/Texture.h"
 
+/**
+  * Render time for 1024x1024 -> 16 minutes
+**/
+
 int main()
 {
 
     BasicScene scene;
-    scene.render("testWithoutTexture");
+    scene.render("OpenMPWithLoadingBar");
 //
 //    if (SceneLoader::loadSceneFromFile("sample_scene.txt", scene))
 //    {

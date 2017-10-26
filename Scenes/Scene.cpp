@@ -1,5 +1,6 @@
 #include "Scene.h"
 
+#include <omp.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string>
@@ -49,6 +50,7 @@ void Scene::render(std::string fileName) const
 
     for(size_t y = 0; y < cam->getHeight(); ++y)
     {
+        //#pragma omp parallel for num_threads(16)
         for(size_t x = 0; x < cam->getWidth(); ++x)
         {
             Color finalColor;
