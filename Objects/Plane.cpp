@@ -14,6 +14,7 @@ bool Plane::intersect(const Ray& ray, IntersectionData *intersectionData) const
         intersectionData->d = d;
         intersectionData->pos = ray.at(d);
         intersectionData->n = n;
+        intersectionData->blendFactor = 1.0;
         intersectionData->mat = m_mat;
     }
     return true;

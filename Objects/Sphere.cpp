@@ -24,6 +24,7 @@ bool Sphere::intersect(const Ray& ray, IntersectionData *intersectionData) const
         intersectionData->d = d1 < d2 && d1 > DELTA_INTERSECT ? d1 : d2;
         intersectionData->pos = ray.at(intersectionData->d);
         intersectionData->n = (intersectionData->pos - transformedPos).normalized();
+        intersectionData->blendFactor = 1.0;
         intersectionData->mat = m_mat;
     }
     return true;
