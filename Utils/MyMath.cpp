@@ -9,7 +9,7 @@ namespace Eigen
 
 }
 
-namespace std
+namespace math
 {
     float clamp(float v, float min, float max) { return v < max ? v < min ? min : v : max; }
     float map(float v, float iMin, float iMax, float fMin, float fMax)
