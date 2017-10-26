@@ -16,6 +16,13 @@ namespace Eigen
 namespace std
 {
     float clamp(float v, float min, float max);
+    float map(float v, float iMin, float iMax, float fMin, float fMax);
+}
+
+template<typename T>
+T tripolate(const T& v1, const T& v2, const T& v3, float t, float s, float u)
+{
+    return v1 * u + v2 * s + v3 * t;
 }
 
 #endif // MYMATH_H
